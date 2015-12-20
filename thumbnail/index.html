@@ -23,19 +23,31 @@
     }
   });
 
-  var Thumbnail = React.creatClass({
+  var Thumbnail = React.createClass({
     render: function() {
-      return
+      return <div className="thumbnail">
+      <img src={this.props.imageUrl}/>
+      <div class="caption">
+        <h3>{this.props.header}</h3>
+        <p>{this.props.description}</p>
+        <p>
+          <Badge title={this.props.title} number={this.props.number} />
+        </p>
+      </div>
+    </div>
     }
 
   })
 
   var options = {
-    title: 'Inbox',
-    number: 42
+    title: 'See Tutorials',
+    number: 32,
+    header: 'Learn React',
+    description: 'React is a fanastic new library.',
+    imageUrl: 'https://facebook.github.io/react/img/logo_og.png'
   };
   //react, please render this class, instance of
-  var element = React.createElement(Badge, options);
+  var element = React.createElement(Thumbnail, options);
   //react, after you render this class, please place it in my body tag
   React.render(element, document.querySelector('.target'));
 
