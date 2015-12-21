@@ -1,0 +1,75 @@
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 target">
+      </div>
+    </div>
+  </div>
+</body>
+
+<script type="text/jsx">
+  //define a class
+  var Badge = React.createClass({
+    render: function(){
+
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  });
+
+  var Thumbnail = React.createClass({
+    render: function() {
+      return <div className="thumbnail">
+      <img src={this.props.imageUrl}/>
+      <div class="caption">
+        <h3>{this.props.header}</h3>
+        <p>{this.props.description}</p>
+        <p>
+          <Badge title={this.props.title} number={this.props.number} />
+        </p>
+      </div>
+    </div>
+    }
+
+  });
+
+  var ThumbnailList = React.createClass({
+    render: function () {
+      var list = this.props.thumbnailData.map(function(thumbnailProps){
+        return <Thumbnail {...thumbnailProps}/>
+      });
+
+      return <div>
+        {list}
+      </div>
+    }
+
+  });
+
+  var options = {
+    thumbnailData : [{
+    title: 'Show Courses',
+    number: 32,
+    header: 'Learn React',
+    description: 'React is a fanastic new library.',
+    imageUrl: 'https://facebook.github.io/react/img/logo_og.png'
+    },{
+    title: 'See Tutorials',
+    number: 25,
+    header: 'Learn Gulp',
+    description: 'Gulp will speed up your development workflow.Gulp will speed up your development workflow.',
+    imageUrl: 'https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png'
+    }]
+  };
+  //react, please render this class, instance of
+  var element = React.createElement(ThumbnailList, options);
+  //react, after you render this class, please place it in my body tag
+  React.render(element, document.querySelector('.target'));
+
+</script>
