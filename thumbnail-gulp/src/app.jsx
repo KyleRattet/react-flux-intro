@@ -13,6 +13,8 @@
     imageUrl: 'https://raw.githubusercontent.com/gulpjs/artwork/master/gulp-2x.png'
     }]
   };
+
+
   //react, please render this class, instance of
   var element = React.createElement(ThumbnailList, options);
   //react, after you render this class, please place it in my body tag
