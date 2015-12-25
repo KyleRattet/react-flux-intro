@@ -4,7 +4,7 @@ var ListItem = require('./list-item');
 
 module.exports = React.createClass({
   handleClick: function (){
-    alert('hello from dropdown');
+    alert('hello');
   },
   render: function () {
     var list = this.props.items.map(function(item){
